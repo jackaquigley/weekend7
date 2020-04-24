@@ -6,14 +6,28 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+  name: 'app',
+  data() {
+    return {
+      stats: [],
+    }
+  },
+    mounted(){
+      fetch('https://api.covid19uk.live/')
+      .then(res => res.json())
+      .then(data => this.stats = data)
+      .then(sortData())
+    },
+    methods: {
+      sortData: function(){
+      const data = stats.splice
+      const info = stats.splice
+    }
 }
+}
+
 </script>
 
 <style>
