@@ -1,35 +1,45 @@
 <template>
   <div id="app">
-    <source-topper v-if="stats.length" :stats="stats"></source-topper>
-      </div>
-</template>
-<source-topper>
-</source-topper>
+
+    <main-data v-if='stats':stats="stats"></main-data>
+
+    </div>
+
+</template
+>
 <script>
 
-import SourceTopper from './components/SourceTopper.vue'
+import MainData from './components/MainData.vue'
 
 export default {
   name: 'app',
+  props: ['areaData'],
   data() {
     return {
-      stats: [],
-      SelectedSource: null
+      stats: null
     }
   },
   components: {
-    'source-topper': SourceTopper
+    'main-data': MainData
   },
   mounted(){
-    fetch('https://api.covid19uk.live/')
+    fetch('https://api.covid19uk.live')
     .then(res => res.json())
-    .then(data => this.stats = data.data
-    )}
+    .then(data => this.stats = data.data[0])
+    }
 }
-
 
 </script>
 
 <style>
+
+ #pageTitle {
+   text-align: center;
+ }
+
+ #main-page {
+   border: 1px black solid;
+   width: 50%;
+ }
 
 </style>
